@@ -337,3 +337,7 @@ template {
 [hidden] {
   display: none;
 }
+
+main {
+  background-image: "/images/restaurant.jpg";
+}
