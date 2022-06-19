@@ -341,3 +341,7 @@ template {
 main {
   background-image: "images/restaurant.jpg";
 }
+
+h1 {
+  color: red;
+}
