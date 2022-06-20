@@ -382,9 +382,8 @@ footer {
 }
 
 #background {
+  display: block;
   max-width: calc(100% - 4px);
-  -o-object-fit: cover;
-     object-fit: cover;
   border: solid blue 2px;
 }
 
