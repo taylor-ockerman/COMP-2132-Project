@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/keyboard.js" defer></script>
+    <script src="scripts/game.js" defer></script>
 </head>
 
 <body>
@@ -19,12 +20,17 @@
         <main>
             <div id="gameDisplay">
                 <div id="gameWord">
-                    <p>The words will go here</p>
+                    <p id="word">The words will go here</p>
+                    <p id="clue">The clue will go here</p>
                 </div>
                 <img id="background" src="images/moon2.jpg" alt="moon">
                 <img id="hangmanPic" src="images/hangman.png" alt="hangman">
             </div>
             <div id="keyboard">
+            </div>
+            <div id="gameInfo">
+                <p>Wrong Attempts: 0/7</p>
+                <p>This is where the instructions will go!</p>
             </div>
         </main>
         <footer>

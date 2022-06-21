@@ -1,5 +1,6 @@
 const keyboardContainer = document.getElementById("keyboard");
-const word = document.getElementById("gameWord");
+const word = document.getElementById("word");
+let clickedKeys = []
 
 const keyboard = {
     elements: {
@@ -38,8 +39,10 @@ const keyboard = {
 
             button.addEventListener("click", function () {
                 console.log(`${key} key was pressed!`);
-                word.innerHTML = `${key} key was pressed!`
+                //word.innerHTML = `${key} key was pressed!`
                 button.classList.add("keyboardKey--pressed");
+                clickedKeys.push(key);
+                console.log(clickedKeys);
             });
 
             //console.log(`${key} button was created`);
@@ -61,6 +64,7 @@ const keyboard = {
         children.forEach(function (button){
             button.classList.remove("keyboardKey--pressed");
         });
+        clickedKeys = [];
     }
 
 
@@ -69,17 +73,6 @@ const keyboard = {
     // }
 
 };
-
-// function resetKeys() {
-//     keyboard.elements.keysContainer.forEach(function (button) {
-//         button.classList.remove("keyboardKey--pressed");
-//     });
-// }
-
-word.addEventListener("click", function(){
-    keyboard.resetKeys();
-});
-
 
 window.addEventListener("DOMContentLoaded", function () {
     keyboard.initialize();
