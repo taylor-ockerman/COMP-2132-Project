@@ -4,6 +4,7 @@ const gameDataLocation = "/json/gameData.json"
 const buttons = document.getElementById("keyboard");
 let gameData = null;
 let storedWord;
+let wordIndex;
 let wordArray = [];
 
 function getRandomInt(max){
@@ -31,11 +32,11 @@ function setUpGame(){
         console.log("No game data loaded");
         return;
     }
-    const index = getRandomInt(gameData.length);
-    storedWord = gameData[index].word;
+    wordIndex = getRandomInt(gameData.length);
+    storedWord = gameData[wordIndex].word;
     
     wordArray = Array(storedWord.length).fill("_")
-    wordCheck(index);
+    wordCheck(wordIndex);
     // for(let i = 0; i < gameData[index].word.length; i++){
     //     if(i == gameData[index].word.length){
     //         word.innerHTML += `${wordArray[i]}</p>`;
@@ -43,7 +44,7 @@ function setUpGame(){
     //         word.innerHTML += `${wordArray[i]} `;
     //     }
     // }
-    gameClue.innerHTML = `<p>${gameData[index].clue}</p>`;
+    gameClue.innerHTML = `<p>${gameData[wordIndex].clue}</p>`;
 }
 
 function wordCheck(index){
@@ -71,7 +72,7 @@ buttons.addEventListener("click", function(){
             wordArray[i] = clickedKeys[clickedKeys.length - 1].toLowerCase();
         }
     }
-    //wordCheck(gameData.);
+    wordCheck(wordIndex);
     console.log(wordArray);
 });
 
