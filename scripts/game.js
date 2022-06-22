@@ -1,30 +1,18 @@
 const gameWord = document.getElementById("gameWord");
 const gameClue = document.getElementById("clue");
-const gameDataLocation = "/json/gameData.json"
 const buttons = document.getElementById("keyboard");
-let gameData = null;
+const guessCount = document.getElementById("guessCount");
+const popup = document.getElementById("popup");
+const playAgainBtn = document.getElementById("playAgain");
+const gameEnd = document.getElementById("gameEnd");
+
 let storedWord;
 let wordIndex;
 let wordArray = [];
+let wrongGuesses = 0;
+let correctGuesses = 0;
 
-function getRandomInt(max){
-    return Math.floor(Math.random() * max);
-}
-
-function loadData(){
-    fetch(gameDataLocation)
-    .then(function(response){
-        if(response.ok){
-            return response.json();
-        }else{
-            console.log("Network error: fetch failed");
-        }
-    })
-    .then(function(data){
-        gameData = data;
-        console.log(data);
-    });
-}
+const maxGuesses = 7;
 
 function setUpGame(){
     keyboard.resetKeys();
@@ -37,28 +25,11 @@ function setUpGame(){
     
     wordArray = Array(storedWord.length).fill("_")
     wordCheck(wordIndex);
-    // for(let i = 0; i < gameData[index].word.length; i++){
-    //     if(i == gameData[index].word.length){
-    //         word.innerHTML += `${wordArray[i]}</p>`;
-    //     }else{
-    //         word.innerHTML += `${wordArray[i]} `;
-    //     }
-    // }
-    gameClue.innerHTML = `<p>${gameData[wordIndex].clue}</p>`;
-}
 
-function wordCheck(index){
-    word.innerHTML = "<p>" 
-    for(let i = 0; i < gameData[index].word.length; i++){
-        if(i == gameData[index].word.length){
-            word.innerHTML += `${wordArray[i]}</p>`;
-        }else if(gameData[index].word[i] === " "){
-            console.log("A SPACE IN THE CLUE WAS DETECTED");
-            word.innerHTML += "&nbsp;&nbsp;";
-        }else{
-            word.innerHTML += `${wordArray[i]} `;
-        }
-    }
+    gameClue.innerHTML = `<p>${gameData[wordIndex].clue}</p>`;
+    guessCount.innerHTML = `Wrong Attempts: ${wrongGuesses}/${maxGuesses}`;
+    wrongGuesses = 0;
+    correctGuesses = 0;
 }
 
 gameWord.addEventListener("click", function(){
@@ -66,16 +37,54 @@ gameWord.addEventListener("click", function(){
     keyboard.resetKeys();
 });
 
-buttons.addEventListener("click", function(){
-    for(let i = 0; i < storedWord.length; i++){
-        if(clickedKeys[clickedKeys.length - 1].toLowerCase() === storedWord[i]){
-            wordArray[i] = clickedKeys[clickedKeys.length - 1].toLowerCase();
-        }
-    }
-    wordCheck(wordIndex);
-    console.log(wordArray);
-});
 
+// buttons.addEventListener("click", function(){
+//     let letterFound = false;
+//     for(let i = 0; i < storedWord.length; i++){
+//         if(clickedKeys[clickedKeys.length - 1].toLowerCase() === storedWord[i]){
+//             wordArray[i] = clickedKeys[clickedKeys.length - 1].toLowerCase();
+//             letterFound = true;
+//             correctGuesses++;
+//         }
+//         console.log(`Correct: ${correctGuesses}, length: ${storedWord.replace(/\s+/g, '').length}`);
+//     }
+//     if(!letterFound){
+//         wrongGuesses++;
+//         guessCount.innerHTML = `Wrong Attempts: ${wrongGuesses}/${maxGuesses}`;
+//     }
+//     if(correctGuesses == storedWord.replace(/\s+/g, '').length){
+//         console.log("should have won");
+//         gameOver(true);
+//     }
+//     if(wrongGuesses == maxGuesses){
+//         //FAIL STATE
+//         popup.style.display = "block";
+//         gameOver(false);
+//         wrongGuesses = 0;
+//         correctGuesses = 0;
+//         console.log("HANGMAN LOSS");
+//     }
+//     wordCheck(wordIndex);
+//     //console.log(wordArray);
+// });
+
+function gameOver(pass){
+    if(pass){
+        popup.style.display = "block";
+        gameEnd.innerHTML="You got it!";
+        wordReveal.innerHTML = `The word was "${storedWord}"`;
+    }else{
+        popup.style.display = "block";
+        gameEnd.innerHTML="Not quite...";
+        wordReveal.innerHTML = `The word was "${storedWord}"`;
+    }
+}
+
+playAgainBtn.addEventListener("click", function(){
+    setUpGame();
+    keyboard.resetKeys();
+    popup.style.display = "none";
+});
 
 window.addEventListener("DOMContentLoaded", function () {
     loadData();

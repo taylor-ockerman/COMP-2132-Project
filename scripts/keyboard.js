@@ -9,10 +9,6 @@ const keyboard = {
         keys: []
     },
 
-    eventHandlers: {
-        onInput: null,
-    },
-
     initialize() {
         this.elements.main = keyboardContainer;
         this.elements.keysContainer = document.createElement("div");
@@ -36,13 +32,14 @@ const keyboard = {
             button.setAttribute("name", key);
             button.innerHTML = key;
             button.classList.add("keyboardKey");
-
             button.addEventListener("click", function () {
-                console.log(`${key} key was pressed!`);
+                //console.log(`${key} key was pressed!`);
                 //word.innerHTML = `${key} key was pressed!`
-                button.classList.add("keyboardKey--pressed");
+                //button.classList.add("keyboardKey--pressed");
+                button.disabled= true;
                 clickedKeys.push(key);
-                console.log(clickedKeys);
+                guessCheck();
+                //console.log(clickedKeys);
             });
 
             //console.log(`${key} button was created`);
@@ -62,16 +59,11 @@ const keyboard = {
         //console.log(this.elements.keysContainer);
         const children = this.elements.keysContainer.childNodes;
         children.forEach(function (button){
-            button.classList.remove("keyboardKey--pressed");
+            //button.classList.remove("keyboardKey--pressed");
+            button.disabled= false;
         });
         clickedKeys = [];
     }
-
-
-    // triggerEvent(handler) {
-    //     console.log("Event triggered. " + handler);
-    // }
-
 };
 
 window.addEventListener("DOMContentLoaded", function () {

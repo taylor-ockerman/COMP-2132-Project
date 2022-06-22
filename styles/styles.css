@@ -370,7 +370,8 @@ header {
   justify-content: center;
   align-items: center;
 }
-header h1, header h2 {
+header h1,
+header h2 {
   margin: 0;
   padding: 0;
 }
@@ -391,6 +392,8 @@ footer {
   outline: solid green 2px;
   height: 100%;
   position: relative;
+  background-image: url("../images/moon2.jpg");
+  background-size: cover;
 }
 
 .keyboard {
@@ -398,20 +401,16 @@ footer {
   outline: solid turquoise 2px;
 }
 
-header, footer {
+header,
+footer {
   outline: solid red 2px;
 }
 
 #hangmanPic {
-  outline: solid blue 2px;
   display: block;
   width: 20%;
   margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 10%);
+  padding: 50% 40% 10%;
 }
 
 #gameWord {
@@ -458,4 +457,39 @@ header, footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(28, 29, 31, 0);
+}
+#popup div {
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  border: black solid 3px;
+  border-radius: 1.05em;
+  background-color: #222629;
+  max-width: 900px;
+}
+#popup p, #popup h2 {
+  margin: 2rem;
+}
+#popup #playAgain {
+  margin: 2rem;
+  padding: 1em;
+  font-size: larger;
+  border-radius: 1.1em;
 }
