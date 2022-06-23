@@ -7,7 +7,7 @@
 - Must include at least one Javascript animation (for example, a fade in effect).
 - jQuery may be used if desired.
 - DONE CSS should be compiled from SASS. SASS file(s) should demonstrate the use of SASS variables and at least one SASS mixin. Both .css and .scss files should be included with the project submission.
-- Project must be published to a public repository on Github.com
+- DONE Project must be published to a public repository on Github.com
 - DONE The hangman game should randomly select a word and hint from a collection of words and helpful hints.
 - DONE The user must guess the correct word by entering letters into an input box.
 - DONE If the user guesses a letter that is contained in the selected word than the game should display the correctly guessed letters in the position of the word where they are located.
