@@ -32,10 +32,10 @@ function setUpGame(){
     correctGuesses = 0;
 }
 
-gameWord.addEventListener("click", function(){
-    setUpGame();
-    keyboard.resetKeys();
-});
+// gameWord.addEventListener("click", function(){
+//     setUpGame();
+//     keyboard.resetKeys();
+// });
 
 
 // buttons.addEventListener("click", function(){
@@ -78,6 +78,7 @@ function gameOver(pass){
         gameEnd.innerHTML="Not quite...";
         wordReveal.innerHTML = `The word was "${storedWord}"`;
     }
+    hangManPic.setAttribute("src", `${imagePath}astronaut0.png`);
 }
 
 playAgainBtn.addEventListener("click", function(){

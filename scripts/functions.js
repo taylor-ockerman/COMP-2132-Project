@@ -1,4 +1,5 @@
-
+const hangManPic = document.getElementById("hangmanPic");
+const imagePath = "/images/";
 
 function getRandomInt(max){
     return Math.floor(Math.random() * max);
@@ -30,6 +31,8 @@ function guessCheck() {
     }
     if(!letterFound){
         wrongGuesses++;
+        console.log(`src set to: "${imagePath} + astronaut${wrongGuesses}.png"`);
+        hangManPic.setAttribute("src", `${imagePath}astronaut${wrongGuesses}.png`);
         guessCount.innerHTML = `Wrong Attempts: ${wrongGuesses}/${maxGuesses}`;
     }
     if(correctGuesses == storedWord.replace(/\s+/g, '').length){

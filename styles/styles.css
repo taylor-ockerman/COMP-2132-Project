@@ -343,7 +343,8 @@ template {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  max-width: 900px;
+  min-width: 60vw;
+  max-width: 1600px;
   outline: solid black 2px;
 }
 
@@ -351,7 +352,7 @@ body {
   display: flex;
   justify-content: center;
   align-content: flex-end;
-  outline: solid black 2px;
+  outline: solid pink 2px;
 }
 
 main {
@@ -390,14 +391,12 @@ footer {
 
 #gameDisplay {
   outline: solid green 2px;
-  height: 100%;
   position: relative;
-  background-image: url("../images/moon2.jpg");
+  background-image: url("../images/moon3.jpg");
   background-size: cover;
 }
 
 .keyboard {
-  height: 50%;
   outline: solid turquoise 2px;
 }
 
@@ -407,16 +406,19 @@ footer {
 }
 
 #hangmanPic {
+  outline: solid blue 2px;
   display: block;
-  width: 20%;
+  width: 40%;
   margin: 0;
-  padding: 50% 40% 10%;
+  padding: 20% 30% 5%;
 }
 
 #gameWord {
   color: white;
-  outline: solid white 2px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 100%;
   margin: 0;
   padding: 0;
@@ -424,11 +426,12 @@ footer {
   top: 10%;
   left: 50%;
   transform: translate(-50%, -20%);
-  font-size: 1.75rem;
 }
 #gameWord p {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
+  align-items: center;
+  font-size: 1em;
 }
 
 .keyboardKeys {
@@ -446,10 +449,6 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.keyboardKey--pressed {
-  opacity: 0.2;
 }
 
 #gameInfo {

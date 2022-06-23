@@ -1,0 +1,20 @@
+- The game page should be carefully designed and styled with CSS to present a high-quality user experience. Submitting a project with poor or little styling will result in a greatly reduced final mark.
+- DONE There must be at least 6 images used.
+- DONE All paths used in HTML, CSS and Javascript files must be relative paths. Do NOT use server root paths that begin with / or client specific paths like C:/
+- HTML, CSS and Javascript files must be free of serious errors (warnings are ok).
+- Code must be well tabbed and use descriptive variable names.
+- DONE Javascript code must include the use of one or more functions authored by you, and one or more Objects authored by you.
+- Must include at least one Javascript animation (for example, a fade in effect).
+- jQuery may be used if desired.
+- DONE CSS should be compiled from SASS. SASS file(s) should demonstrate the use of SASS variables and at least one SASS mixin. Both .css and .scss files should be included with the project submission.
+- Project must be published to a public repository on Github.com
+- DONE The hangman game should randomly select a word and hint from a collection of words and helpful hints.
+- DONE The user must guess the correct word by entering letters into an input box.
+- DONE If the user guesses a letter that is contained in the selected word than the game should display the correctly guessed letters in the position of the word where they are located.
+- DONE If the user makes an incorrect guess, then the program should display part of the hangman graphic.
+- DONE After the user guesses a letter, disable the option so they cannot choose the same letter more than once per game.
+- DONE If the user makes too many incorrect guesses and the entire hangman graphic is displayed, then the user loses the game. Most hangman games allow 6 incorrect guesses
+- DONE If the user correctly guesses all the letters in the selected word than the user wins the game.
+- DONE When the game is over either from making too many incorrect guesses or correctly guessing the word, then the game should display the results (Tell them if they Won or Lost the game) and give the user the option to ‘Play Again’.
+- DONE When a game is over, ensure the user cannot keep guessing letters, but must choose a ‘Play Again’ option before they can play a new game.
+- DONE If the user chooses to ‘Play Again’, reset everything (eg enable all buttons), and start a new game.
