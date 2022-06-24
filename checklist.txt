@@ -1,8 +1,8 @@
-- The game page should be carefully designed and styled with CSS to present a high-quality user experience. Submitting a project with poor or little styling will result in a greatly reduced final mark.
+- DONE The game page should be carefully designed and styled with CSS to present a high-quality user experience. Submitting a project with poor or little styling will result in a greatly reduced final mark.
 - DONE There must be at least 6 images used.
 - DONE All paths used in HTML, CSS and Javascript files must be relative paths. Do NOT use server root paths that begin with / or client specific paths like C:/
-- HTML, CSS and Javascript files must be free of serious errors (warnings are ok).
-- Code must be well tabbed and use descriptive variable names.
+- DONE HTML, CSS and Javascript files must be free of serious errors (warnings are ok).
+- DONE Code must be well tabbed and use descriptive variable names.
 - DONE Javascript code must include the use of one or more functions authored by you, and one or more Objects authored by you.
 - Must include at least one Javascript animation (for example, a fade in effect).
 - jQuery may be used if desired.

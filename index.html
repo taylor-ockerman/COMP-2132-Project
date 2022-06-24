@@ -5,7 +5,10 @@
 <head>
     <title>COMP 2132 Final Project (Hangman)</title>
     <meta charset="utf-8">
-
+    <link rel="shortcut icon" href="#">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/functions.js" defer></script>
     <script src="scripts/data.js" defer></script>
@@ -16,8 +19,8 @@
 <body>
     <div id="wrapper">
         <header>
-            <h1>Taylor Ockerman</h1>
-            <h2>Final Project</h2>
+            <h1 class="gradient-primary">Taylor Ockerman</h1>
+            <h2 class="gradient-primary">Final Project</h2>
         </header>
         <main>
             <div id="gameDisplay">
@@ -32,19 +35,20 @@
             </div>
             <div id="gameInfo">
                 <p id="guessCount"></p>
-                <p>This is where the instructions will go!</p>
+                <!-- <p class="gradient-primary">This is where the instructions will go!</p> -->
             </div>
         </main>
         <section id="popup">
-			<div>
-				<h2 id="gameEnd"></h2>
-				<p id="wordReveal"></p>
-				<button id="playAgain">Play Again</button>
-			</div>
-		</section>
+            <div id="innerPopup">
+                <h2 id="gameEnd"></h2>
+                <p id="wordReveal"></p>
+                <img id="endGIF" src="" alt="">
+                <button id="playAgain">Play Again</button>
+            </div>
+        </section>
         <footer>
-            <h2>COMP 2132</h2>
-            <h2>June 18 2022</h2>
+            <h2 class="gradient-primary">COMP 2132</h2>
+            <h2 class="gradient-primary">June 18 2022</h2>
         </footer>
     </div>
 </body>

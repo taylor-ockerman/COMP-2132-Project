@@ -1,5 +1,30 @@
-$mainColour: grey;
+$mainColour: #000000ff;
+$secondaryColour: #77766Cff;
+$rich-black: #060606ff;
+$highlightColour: #567899ff;
+$dangerColour: red;
+$successColour: green;
 
+$gradient-top: linear-gradient(0deg, #000000ff, #060606ff, #77766Cff);
+$gradient-right: linear-gradient(90deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-bottom: linear-gradient(180deg, $rich-black, $rich-black, $mainColour, $mainColour);
+$gradient-left: linear-gradient(270deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-top-right: linear-gradient(45deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-bottom-right: linear-gradient(135deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-top-left: linear-gradient(225deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-bottom-left: linear-gradient(315deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-radial: radial-gradient($highlightColour, $rich-black, $mainColour, $mainColour );
+
+@mixin fancyBorder ($borderGradientColourOne, $borderGradientColourTwo) {
+    display: inline-grid;
+    padding: 0.5em 1.5em;
+    border: solid 3px;
+    border-image-source: linear-gradient(135deg, $borderGradientColourOne, $borderGradientColourTwo);
+    border-image-slice: 1;
+    background: $rich-black;
+    color: $highlightColour;
+    clip-path: polygon(0% 0.5em, 0.5em 0, 100% 0, 100% calc(100% - 0.5em), calc(100% - 0.5em) 100%, 0% 100%);
+}
 
 #wrapper {
     display: flex;
@@ -8,26 +33,31 @@ $mainColour: grey;
     align-content: center;
     min-width: 60vw;
     max-width: 1600px;
+
     //width: 100%;
-    outline: solid black 2px;
+    //outline: solid black 2px;
 }
 
 body {
+    font-family: 'Space Mono', monospace;
     display: flex;
     justify-content: center;
     align-content: flex-end;
-    outline: solid pink 2px;
+    background-color: $rich-black;
+    color: $highlightColour;
+    //outline: solid pink 2px;
 }
 
 main {
-    max-width: 1800px;
+    //max-width: 1800px;
     //height: 100%;
     flex-grow: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    outline: solid yellow 2px;
+    //outline: solid yellow 2px;
     overflow: auto;
+    box-shadow: 0 0 5em 5em $mainColour;
 }
 
 header {
@@ -40,6 +70,7 @@ header {
     h2 {
         margin: 0;
         padding: 0;
+        z-index: 2;
     }
 }
 
@@ -51,32 +82,38 @@ footer {
 
 #background {
     display: block;
-    max-width: 100%;
+    //max-width: 100%;
     // max-width: calc(100% - 4px);
     //object-fit: cover;
-    outline: solid blue 2px;
+    //outline: solid blue 2px;
+}
+
+#endGIF {
+    border-radius: 1em;
+    box-shadow: 0 0 .5em .5em $mainColour;
 }
 
 #gameDisplay {
-    outline: solid green 2px;
+    //outline: solid green 2px;
     //height: 100%;
     position: relative;
     background-image: url("../images/moon3.jpg");
     background-size: cover;
+    box-shadow: 0 -1em 0.5em 0 $mainColour inset;
 }
 
-.keyboard {
-    //height: 50%;
-    outline: solid turquoise 2px;
+button:disabled {
+    opacity: 0.2;
 }
 
-header,
-footer {
-    outline: solid red 2px;
-}
+
+// header,
+// footer {
+//     outline: solid red 2px;
+// }
 
 #hangmanPic {
-    outline: solid blue 2px;
+    //outline: solid blue 2px;
     display: block;
     width: 40%;
     margin: 0;
@@ -87,9 +124,11 @@ footer {
     // transform: translate(-50%, 10%);
 }
 
+
+
 #gameWord {
     color: white;
-    
+    font-weight: 600;
     //outline: solid white 2px;
     display: flex;
     flex-direction: column;
@@ -109,6 +148,18 @@ footer {
         align-items: center;
         font-size: 1em;
     }
+
+    #word {
+        font-size: 1.6em;
+        //outline: white solid 2px;
+    }
+
+}
+
+.keyboard {
+    // height: 50%;
+    // outline: solid turquoise 2px;
+    background-image: $gradient-radial;
 }
 
 .keyboardKeys {
@@ -121,11 +172,11 @@ footer {
     width: 6%;
     max-width: 80px;
     margin: 3px;
-    border-radius: 4px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    @include fancyBorder($secondaryColour, $mainColour);
 }
 
 #gameInfo {
@@ -133,6 +184,9 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    //background-image: $gradient-bottom;
+    background-color: $mainColour;
+
 }
 
 #popup {
@@ -144,7 +198,7 @@ footer {
     height: 100vh;
     z-index: 100;
     background-color: rgba(28, 29, 31, 0);
-
+    
     div {
         opacity: 1;
         display: flex;
@@ -153,15 +207,15 @@ footer {
         align-items: center;
         position: absolute;
         left: 50%;
-        top: 35%;
+        top: 60%;
         transform: translate(-50%, -50%);
-        border: black solid 3px;
-        border-radius: 1.05em;
-        background-color: #222629;
+        //background-color: $secondaryColour;
+        background-image: radial-gradient();
         max-width: 900px;
     }
 
-    p, h2 {
+    p,
+    h2 {
         margin: 2rem;
     }
 
@@ -170,5 +224,59 @@ footer {
         padding: 1em;
         font-size: larger;
         border-radius: 1.1em;
+    }
+}
+
+#guessCount {
+    font-size: 1.333em;
+}
+
+.winBorder {
+    @include fancyBorder($successColour, $mainColour )
+}
+
+.failBorder {
+    @include fancyBorder($dangerColour, $mainColour )
+}
+
+.danger {
+    color: $dangerColour;
+    outline: solid 2px $dangerColour;
+    border-radius: 1em;
+    padding: 0.1em;
+    font-weight: 400;
+}
+
+.gradient-primary {
+    background-color: $highlightColour;
+    background-image: linear-gradient(135deg, $highlightColour, $secondaryColour);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 600px) {
+    #gameWord {
+        p {
+            margin: 0;
+            padding: 0.3rem;
+            align-items: center;
+            font-size: .8em;
+        }
+
+        #word {
+            font-size: 1.2em;
+            //outline: white solid 2px;
+        }
+
+    }
+
+    .keyboardKey {
+        padding: 0em 1em;
+        width: 2%;
+        max-height: 35px;
     }
 }

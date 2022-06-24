@@ -66,7 +66,5 @@ const keyboard = {
     }
 };
 
-window.addEventListener("DOMContentLoaded", function () {
-    keyboard.initialize();
-});
+
 

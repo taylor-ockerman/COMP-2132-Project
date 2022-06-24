@@ -12,6 +12,6 @@ function loadData(){
     })
     .then(function(data){
         gameData = data;
-        console.log(gameData);
+        //console.log(gameData);
     });
 }

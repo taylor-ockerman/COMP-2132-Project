@@ -1,5 +1,10 @@
 const hangManPic = document.getElementById("hangmanPic");
+const correctSound = new Audio("../sounds/correct.wav");
+const incorrectSound = new Audio("../sounds//incorrect.wav");
 const imagePath = "/images/";
+
+correctSound.volume = 0.2;
+incorrectSound.volume = 0.2;
 
 function getRandomInt(max){
     return Math.floor(Math.random() * max);
@@ -26,24 +31,32 @@ function guessCheck() {
             wordArray[i] = clickedKeys[clickedKeys.length - 1].toLowerCase();
             letterFound = true;
             correctGuesses++;
+            correctSound.play();
         }
         console.log(`Correct: ${correctGuesses}, length: ${storedWord.replace(/\s+/g, '').length}`);
     }
     if(!letterFound){
         wrongGuesses++;
-        console.log(`src set to: "${imagePath} + astronaut${wrongGuesses}.png"`);
-        hangManPic.setAttribute("src", `${imagePath}astronaut${wrongGuesses}.png`);
         guessCount.innerHTML = `Wrong Attempts: ${wrongGuesses}/${maxGuesses}`;
+        
+        incorrectSound.play();
+        hangManPic.setAttribute("src", `${imagePath}astronaut${wrongGuesses < maxGuesses ? wrongGuesses : wrongGuesses - 1}.png`);
+        console.log(`src set to: "${imagePath}astronaut${wrongGuesses}.png"`);
     }
-    if(correctGuesses == storedWord.replace(/\s+/g, '').length){
-        console.log("should have won");
-        gameOver(true);
+    if(wrongGuesses == (maxGuesses - 1)){
+        console.log("should be red text now");
+        guessCount.classList.add("danger");
+        console.log(guessCount.classList);
     }
     if(wrongGuesses == maxGuesses){
         //FAIL STATE
         popup.style.display = "block";
         gameOver(false);
-        console.log("HANGMAN LOSS");
+        //console.log("HANGMAN LOSS");
+    }
+    if(correctGuesses == storedWord.replace(/\s+/g, '').length){
+        //console.log("should have won");
+        gameOver(true);
     }
     wordCheck(wordIndex);
     //console.log(wordArray);
