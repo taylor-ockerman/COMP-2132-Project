@@ -5,8 +5,6 @@ const guessCount = document.getElementById("guessCount");
 const popup = document.getElementById("popup");
 const playAgainBtn = document.getElementById("playAgain");
 const gameEnd = document.getElementById("gameEnd");
-const endGIF = document.getElementById("endGIF");
-const innerPopup = document.getElementById("innerPopup");
 const gifPath = "../gifs/";
 const victorySound = new Audio("../sounds/victory.wav");
 const defeatSound = new Audio("../sounds/cry.wav");
@@ -19,15 +17,20 @@ let wordArray = [];
 let wrongGuesses = 0;
 let correctGuesses = 0;
 let timeoutHandler;
+let frameHandler;
 
 const maxGuesses = 7;
 
 function setUpGame(){
+    cancelAnimationFrame(frameHandler);
     keyboard.resetKeys();
     wrongGuesses = 0;
     correctGuesses = 0;
+    rotation = 0;
     guessCount.classList = "";
     popup.classList = "";
+    innerPopup.classList = "";
+    endGIF.style.transform = `rotate(0deg)`;
     if(gameData === null){
         console.log("No game data loaded");
         return;
@@ -84,16 +87,22 @@ function gameOver(pass){
         gameEnd.innerHTML="You got it!";
         innerPopup.classList.add("winBorder");
         console.log(innerPopup.classList);
-        endGIF.setAttribute("src", `${gifPath}win.gif`);
+        endGIF.setAttribute("src", `${gifPath}win-crop.gif`);
+        // frameHandler = requestAnimationFrame(rotateGIF());
         wordReveal.innerHTML = `The word was "${storedWord}"`;
+        victorySound.pause();
+        victorySound.currentTime = 0;
         victorySound.play();
     }else{
         popup.style.display = "block";
         innerPopup.classList.add("failBorder");
         console.log(innerPopup.classList);
         gameEnd.innerHTML="Not quite...";
-        endGIF.setAttribute("src", `${gifPath}lose.gif`);
+        endGIF.setAttribute("src", `${gifPath}lose-crop.gif`);
+        // frameHandler = requestAnimationFrame(rotateGIF());
         wordReveal.innerHTML = `The word was "${storedWord}"`;
+        defeatSound.pause();
+        defeatSound.currentTime = 0;
         defeatSound.play();
     }
     
@@ -120,4 +129,12 @@ window.addEventListener("DOMContentLoaded", function () {
     timeoutHandler = setTimeout(function(){
         setUpGame();
     }, 200)
+});
+
+victorySound.addEventListener("play",function(){
+    frameHandler = requestAnimationFrame(rotateGIF);
+});
+
+defeatSound.addEventListener("play", function(){
+    frameHandler = requestAnimationFrame(shakeGIF);
 });
