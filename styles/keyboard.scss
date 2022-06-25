@@ -1,0 +1,35 @@
+button:disabled {
+    opacity: 0.2;
+}
+
+.keyboard {
+    // height: 50%;
+    // outline: solid turquoise 2px;
+    background-image: $gradient-radial;
+}
+
+.keyboardKeys {
+    text-align: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.keyboardKey {
+    height: 45px;
+    width: 6%;
+    max-width: 80px;
+    margin: 3px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @include fancyBorder($secondaryColour, $mainColour);
+}
+
+@media screen and (max-width: 600px) {
+    .keyboardKey {
+        padding: 0em 1em;
+        width: 2%;
+        max-height: 35px;
+    }
+
+}

@@ -34,8 +34,6 @@ const keyboard = {
             button.classList.add("keyboardKey");
             button.addEventListener("click", function () {
                 //console.log(`${key} key was pressed!`);
-                //word.innerHTML = `${key} key was pressed!`
-                //button.classList.add("keyboardKey--pressed");
                 button.disabled= true;
                 clickedKeys.push(key);
                 guessCheck();
@@ -59,7 +57,6 @@ const keyboard = {
         //console.log(this.elements.keysContainer);
         const children = this.elements.keysContainer.childNodes;
         children.forEach(function (button){
-            //button.classList.remove("keyboardKey--pressed");
             button.disabled= false;
         });
         clickedKeys = [];

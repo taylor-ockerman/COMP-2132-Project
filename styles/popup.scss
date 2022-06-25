@@ -1,0 +1,51 @@
+#popup {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(28, 29, 31, 0);
+    
+    div {
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        //background-color: $secondaryColour;
+        background-image: radial-gradient();
+        max-width: 900px;
+    }
+
+    p,
+    h2 {
+        margin: 2rem;
+    }
+
+    #playAgain {
+        margin: 2rem;
+        padding: 1em;
+        font-size: larger;
+        border-radius: 1.1em;
+    }
+}
+
+#endGIF {
+    border-radius: 1em;
+    box-shadow: 0 0 .5em .5em $mainColour;
+    margin: 2em;
+}
+
+.winBorder {
+    @include fancyBorder($successColour, $mainColour )
+}
+
+.failBorder {
+    @include fancyBorder($dangerColour, $mainColour )
+}

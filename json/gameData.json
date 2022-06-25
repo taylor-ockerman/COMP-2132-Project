@@ -1,7 +1,7 @@
 [
     {
         "word": "astronaut",
-        "clue": "Space fairing profession."
+        "clue": "Space fairing profession"
     },
     {
         "word": "astronomy",
@@ -9,26 +9,62 @@
     },
     {
         "word": "black hole",
-        "clue": "So massive that it traps light."
+        "clue": "So massive that it traps light"
     },
     {
         "word": "comet",
-        "clue": "Celestial body made of ice."
+        "clue": "Celestial body made of ice"
     },
     {
         "word": "dwarf star",
-        "clue": "Relatively small and dim ball of gas."
+        "clue": "Relatively small and dim ball of gas"
     },
     {
         "word": "exoplanet",
-        "clue": "A planet located outside our solar system."
+        "clue": "A planet located outside our solar system"
     },
     {
         "word": "gamma ray",
-        "clue": "Shortest of the electromagnetic rays, produced by decay of atomic nuclei."
+        "clue": "Shortest of the electromagnetic rays, produced by decay of atomic nuclei"
     },
     {
         "word": "hydrogen",
-        "clue": "Most abundant element in the universe."
+        "clue": "Most abundant element in the universe"
+    },
+    {
+        "word": "ionosphere",
+        "clue": "Where earths atmosphere meets space"
+    },
+    {
+        "word": "jupiter",
+        "clue": "Largest planet in our solar system"
+    },
+    {
+        "word": "lightyear",
+        "clue": "Distance light travels in one earth year"
+    },
+    {
+        "word": "milky way",
+        "clue": "Our galaxy"
+    },
+    {
+        "word": "north star",
+        "clue": "Common name for the star polaris"
+    },
+    {
+        "word": "orbit",
+        "clue": "Earth does this around the sun"
+    },
+    {
+        "word": "perihelion",
+        "clue": "Point of an orbit nearest to the sun"
+    },
+    {
+        "word": "satellite",
+        "clue": "Celestial body orbiting a planet"
+    },
+    {
+        "word": "uranus",
+        "clue": "Seventh planet from the sun"
     }
 ]

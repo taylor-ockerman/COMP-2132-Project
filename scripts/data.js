@@ -1,4 +1,4 @@
-const gameDataLocation = "/json/gameData.json"
+const gameDataLocation = "../json/gameData.json"
 let gameData = null;
 
 function loadData(){
