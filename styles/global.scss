@@ -2,17 +2,18 @@ $mainColour: #000000ff;
 $secondaryColour: #77766Cff;
 $rich-black: #060606ff;
 $highlightColour: #567899ff;
+$offColour: #5F5F55ff;
 $dangerColour: red;
 $successColour: green;
 
-$gradient-top: linear-gradient(0deg, #000000ff, #060606ff, #77766Cff);
-$gradient-right: linear-gradient(90deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-top: linear-gradient(0deg, $mainColour, $rich-black, $secondaryColour);
+$gradient-right: linear-gradient(90deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
 $gradient-bottom: linear-gradient(180deg, $rich-black, $rich-black, $mainColour, $mainColour);
-$gradient-left: linear-gradient(270deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
-$gradient-top-right: linear-gradient(45deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
-$gradient-bottom-right: linear-gradient(135deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
-$gradient-top-left: linear-gradient(225deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
-$gradient-bottom-left: linear-gradient(315deg, #000000ff, #77766Cff, #060606ff, #5F5F55ff, #567899ff);
+$gradient-left: linear-gradient(270deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
+$gradient-top-right: linear-gradient(45deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
+$gradient-bottom-right: linear-gradient(135deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
+$gradient-top-left: linear-gradient(225deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
+$gradient-bottom-left: linear-gradient(315deg, $mainColour, $secondaryColour, $rich-black, $offColour, $highlightColour);
 $gradient-radial: radial-gradient($highlightColour, $rich-black, $mainColour, $mainColour );
 
 @mixin fancyBorder ($borderGradientColourOne, $borderGradientColourTwo) {
@@ -24,18 +25,6 @@ $gradient-radial: radial-gradient($highlightColour, $rich-black, $mainColour, $m
     background: $rich-black;
     color: $highlightColour;
     clip-path: polygon(0% 0.5em, 0.5em 0, 100% 0, 100% calc(100% - 0.5em), calc(100% - 0.5em) 100%, 0% 100%);
-}
-
-#wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    min-width: 60vw;
-    max-width: 1600px;
-
-    //width: 100%;
-    //outline: solid black 2px;
 }
 
 body {
@@ -80,18 +69,15 @@ footer {
     align-items: center;
 }
 
-#background {
-    display: block;
-    //max-width: 100%;
-    // max-width: calc(100% - 4px);
-    //object-fit: cover;
-    //outline: solid blue 2px;
-}
-
-#endGIF {
-    border-radius: 1em;
-    box-shadow: 0 0 .5em .5em $mainColour;
-    margin: 2em;
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    min-width: 60vw;
+    max-width: 1600px;
+    //width: 100%;
+    //outline: solid black 2px;
 }
 
 #gameDisplay {
@@ -102,30 +88,6 @@ footer {
     background-size: cover;
     box-shadow: 0 -1em 0.5em 0 $mainColour inset;
 }
-
-button:disabled {
-    opacity: 0.2;
-}
-
-
-// header,
-// footer {
-//     outline: solid red 2px;
-// }
-
-#hangmanPic {
-    //outline: solid blue 2px;
-    display: block;
-    width: 40%;
-    margin: 0;
-    padding: 20% 30% 5%;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, 10%);
-}
-
-
 
 #gameWord {
     color: white;
@@ -157,27 +119,16 @@ button:disabled {
 
 }
 
-.keyboard {
-    // height: 50%;
-    // outline: solid turquoise 2px;
-    background-image: $gradient-radial;
-}
-
-.keyboardKeys {
-    text-align: center;
-    margin: 1rem 0 1rem 0;
-}
-
-.keyboardKey {
-    height: 45px;
-    width: 6%;
-    max-width: 80px;
-    margin: 3px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    @include fancyBorder($secondaryColour, $mainColour);
+#hangmanPic {
+    //outline: solid blue 2px;
+    display: block;
+    width: 40%;
+    margin: 0;
+    padding: 20% 30% 5%;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, 10%);
 }
 
 #gameInfo {
@@ -187,57 +138,10 @@ button:disabled {
     justify-content: center;
     //background-image: $gradient-bottom;
     background-color: $mainColour;
-
-}
-
-#popup {
-    display: none;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    background-color: rgba(28, 29, 31, 0);
-    
-    div {
-        opacity: 1;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        left: 50%;
-        top: 60%;
-        transform: translate(-50%, -50%);
-        //background-color: $secondaryColour;
-        background-image: radial-gradient();
-        max-width: 900px;
-    }
-
-    p,
-    h2 {
-        margin: 2rem;
-    }
-
-    #playAgain {
-        margin: 2rem;
-        padding: 1em;
-        font-size: larger;
-        border-radius: 1.1em;
-    }
 }
 
 #guessCount {
     font-size: 1.333em;
-}
-
-.winBorder {
-    @include fancyBorder($successColour, $mainColour )
-}
-
-.failBorder {
-    @include fancyBorder($dangerColour, $mainColour )
 }
 
 .danger {
@@ -246,18 +150,6 @@ button:disabled {
     border-radius: 1em;
     padding: 0.1em;
     font-weight: 400;
-}
-
-.gradient-primary {
-    background-color: $highlightColour;
-    background-image: linear-gradient(135deg, $highlightColour, $secondaryColour);
-    background-size: 100%;
-    background-repeat: repeat;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
 }
 
 @media screen and (max-width: 600px) {
@@ -273,12 +165,5 @@ button:disabled {
             font-size: 1.2em;
             //outline: white solid 2px;
         }
-
-    }
-
-    .keyboardKey {
-        padding: 0em 1em;
-        width: 2%;
-        max-height: 35px;
     }
 }

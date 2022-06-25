@@ -338,15 +338,6 @@ template {
   display: none;
 }
 
-#wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  min-width: 60vw;
-  max-width: 1600px;
-}
-
 body {
   font-family: "Space Mono", monospace;
   display: flex;
@@ -384,14 +375,13 @@ footer {
   align-items: center;
 }
 
-#background {
-  display: block;
-}
-
-#endGIF {
-  border-radius: 1em;
-  box-shadow: 0 0 0.5em 0.5em black;
-  margin: 2em;
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  min-width: 60vw;
+  max-width: 1600px;
 }
 
 #gameDisplay {
@@ -399,17 +389,6 @@ footer {
   background-image: url("../images/moon3.jpg");
   background-size: cover;
   box-shadow: 0 -1em 0.5em 0 black inset;
-}
-
-button:disabled {
-  opacity: 0.2;
-}
-
-#hangmanPic {
-  display: block;
-  width: 40%;
-  margin: 0;
-  padding: 20% 30% 5%;
 }
 
 #gameWord {
@@ -435,6 +414,48 @@ button:disabled {
 }
 #gameWord #word {
   font-size: 1.6em;
+}
+
+#hangmanPic {
+  display: block;
+  width: 40%;
+  margin: 0;
+  padding: 20% 30% 5%;
+}
+
+#gameInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+#guessCount {
+  font-size: 1.333em;
+}
+
+.danger {
+  color: red;
+  outline: solid 2px red;
+  border-radius: 1em;
+  padding: 0.1em;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 600px) {
+  #gameWord p {
+    margin: 0;
+    padding: 0.3rem;
+    align-items: center;
+    font-size: 0.8em;
+  }
+  #gameWord #word {
+    font-size: 1.2em;
+  }
+}
+button:disabled {
+  opacity: 0.2;
 }
 
 .keyboard {
@@ -466,14 +487,13 @@ button:disabled {
           clip-path: polygon(0% 0.5em, 0.5em 0, 100% 0, 100% calc(100% - 0.5em), calc(100% - 0.5em) 100%, 0% 100%);
 }
 
-#gameInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
+@media screen and (max-width: 600px) {
+  .keyboardKey {
+    padding: 0em 1em;
+    width: 2%;
+    max-height: 35px;
+  }
 }
-
 #popup {
   display: none;
   position: fixed;
@@ -508,8 +528,10 @@ button:disabled {
   border-radius: 1.1em;
 }
 
-#guessCount {
-  font-size: 1.333em;
+#endGIF {
+  border-radius: 1em;
+  box-shadow: 0 0 0.5em 0.5em black;
+  margin: 2em;
 }
 
 .winBorder {
@@ -536,14 +558,6 @@ button:disabled {
           clip-path: polygon(0% 0.5em, 0.5em 0, 100% 0, 100% calc(100% - 0.5em), calc(100% - 0.5em) 100%, 0% 100%);
 }
 
-.danger {
-  color: red;
-  outline: solid 2px red;
-  border-radius: 1em;
-  padding: 0.1em;
-  font-weight: 400;
-}
-
 .gradient-primary {
   background-color: #567899;
   background-image: linear-gradient(135deg, #567899, #77766c);
@@ -554,22 +568,4 @@ button:disabled {
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
-}
-
-@media screen and (max-width: 600px) {
-  #gameWord p {
-    margin: 0;
-    padding: 0.3rem;
-    align-items: center;
-    font-size: 0.8em;
-  }
-  #gameWord #word {
-    font-size: 1.2em;
-  }
-
-  .keyboardKey {
-    padding: 0em 1em;
-    width: 2%;
-    max-height: 35px;
-  }
 }

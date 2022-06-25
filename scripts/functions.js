@@ -3,10 +3,18 @@ const innerPopup = document.getElementById("innerPopup");
 const endGIF = document.getElementById("endGIF");
 const correctSound = new Audio("../sounds/correct.wav");
 const incorrectSound = new Audio("../sounds//incorrect.wav");
-const imagePath = "/images/";
+const imagePath = "../images/";
 
-correctSound.volume = 0.2;
-incorrectSound.volume = 0.2;
+const rotationMax = 360;
+const tiltMax = 30
+const tiltSpeed = 0.5;
+const volumeLimit = 0.2;
+
+let rotation = 0;
+let positive = true;
+
+correctSound.volume = volumeLimit;
+incorrectSound.volume = volumeLimit;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -33,25 +41,27 @@ function guessCheck() {
             wordArray[i] = clickedKeys[clickedKeys.length - 1].toLowerCase();
             letterFound = true;
             correctGuesses++;
-            correctSound.pause();
-            correctSound.currentTime = 0;
+            // correctSound.pause();
+            // correctSound.currentTime = 0;
+            // correctSound.load();
             correctSound.play();
         }
-        console.log(`Correct: ${correctGuesses}, length: ${storedWord.replace(/\s+/g, '').length}`);
+        // console.log(`Correct: ${correctGuesses}, length: ${storedWord.replace(/\s+/g, '').length}`);
     }
     if (!letterFound) {
         wrongGuesses++;
         guessCount.innerHTML = `Wrong Attempts: ${wrongGuesses}/${maxGuesses}`;
-        incorrectSound.pause();
-        incorrectSound.currentTime = 0;
+        // incorrectSound.pause();
+        // incorrectSound.currentTime = 0;
+        // incorrectSound.load();
         incorrectSound.play();
         hangManPic.setAttribute("src", `${imagePath}astronaut${wrongGuesses < maxGuesses ? wrongGuesses : wrongGuesses - 1}.png`);
-        console.log(`src set to: "${imagePath}astronaut${wrongGuesses}.png"`);
+        // console.log(`src set to: "${imagePath}astronaut${wrongGuesses}.png"`);
     }
     if (wrongGuesses == (maxGuesses - 1)) {
-        console.log("should be red text now");
+        // console.log("should be red text now");
         guessCount.classList.add("danger");
-        console.log(guessCount.classList);
+        // console.log(guessCount.classList);
     }
     if (wrongGuesses == maxGuesses) {
         //FAIL STATE
@@ -67,11 +77,8 @@ function guessCheck() {
     //console.log(wordArray);
 }
 
-let rotation = 0;
-let positive = true;
-
-function rotateGIF() {
-    if (rotation > 359) {
+function rotateImg() {
+    if (rotation >= rotationMax) {
         positive = false;
     }
     if (rotation < 1) {
@@ -79,21 +86,22 @@ function rotateGIF() {
     }
     positive ? rotation += 1 : rotation -= 1;
     endGIF.style.transform = `rotate(${rotation}deg)`;
-    console.log(rotation);
-    frameHandler = requestAnimationFrame(rotateGIF);
+    //console.log(rotation);
+    frameHandler = requestAnimationFrame(rotateImg);
 }
-function shakeGIF() {
+
+function tiltImg() {
     // console.log("SHAKE GIF");
-    if (rotation > 30) {
+    if (rotation > tiltMax) {
         positive = false;
     }
-    if (rotation < -30) {
+    if (rotation < (-1 * tiltMax)) {
         positive = true
     }
 
-    positive ? rotation += 0.5 : rotation -= 0.5;
+    positive ? rotation += tiltSpeed : rotation -= tiltSpeed;
 
     endGIF.style.transform = `rotate(${rotation}deg)`;
-    console.log(rotation);
-    frameHandler = requestAnimationFrame(shakeGIF);
+    //console.log(rotation);
+    frameHandler = requestAnimationFrame(tiltImg);
 }
