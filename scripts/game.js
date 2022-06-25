@@ -32,6 +32,8 @@ function setUpGame() {
     popup.classList = "";
     innerPopup.classList = "";
     endGIF.style.transform = `rotate(0deg)`;
+    popup.style.display = "none";
+    hangManPic.setAttribute("src", `${imagePath}astronaut0.png`);
 
     if (gameData === null) {
         console.log("No game data loaded");
@@ -77,15 +79,11 @@ function gameOver(pass) {
 
 playAgainBtn.addEventListener("click", function () {
     setUpGame();
-    keyboard.resetKeys();
-    popup.style.display = "none";
-    hangManPic.setAttribute("src", `${imagePath}astronaut0.png`);
 });
 
 window.addEventListener("DOMContentLoaded", function () {
     keyboard.initialize();
     loadData();
-    // setUpGame();
     timeoutHandler = setTimeout(function () {
         setUpGame();
     }, timeOut)
